@@ -41,31 +41,3 @@ if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
     app.run(host=host, port=port)
-
-
-@app.before_request
-def before_request() -> str:
-    """ Before Request Handler
-    Requests validation
-    """
-    if auth is None:
-        return
-
-    excluded_paths = ['/api/vi/status/',
-                      '/api/v1/unauthorized/',
-                      '/api/vi/forbidden/']
-
-    if not auth.require_auth(request.path, excluded_paths):
-        return
-
-    if auth.authorization_header(request) isNone:
-        abort(401)
-
-    if auth.current_user(request) is None:
-        abort(403)
-
-
-if __name__ == "__main__":
-    host = getenv("API_HOST", "0.0.0.0")
-    port = getenv("API_HOST", "5000")
-    app.run(host=host, port=port)
