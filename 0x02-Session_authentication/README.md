@@ -1,1 +1,1 @@
-user session authentication
+User session authentication
