@@ -1,0 +1,44 @@
+2024-11-21 22:51:55,470 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-11-21 22:51:55,471 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2024-11-21 22:51:55,471 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-11-21 22:51:55,475 INFO sqlalchemy.engine.Engine 
+DROP TABLE users
+2024-11-21 22:51:55,475 INFO sqlalchemy.engine.Engine [no key 0.00024s] ()
+2024-11-21 22:51:55,489 INFO sqlalchemy.engine.Engine COMMIT
+2024-11-21 22:51:55,489 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-11-21 22:51:55,489 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2024-11-21 22:51:55,489 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-11-21 22:51:55,490 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("users")
+2024-11-21 22:51:55,491 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-11-21 22:51:55,492 INFO sqlalchemy.engine.Engine 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(250) NOT NULL, 
+	hashed_password VARCHAR(250) NOT NULL, 
+	session_id VARCHAR(250), 
+	reset_token VARCHAR(250), 
+	PRIMARY KEY (id)
+)
+
+
+2024-11-21 22:51:55,492 INFO sqlalchemy.engine.Engine [no key 0.00022s] ()
+2024-11-21 22:51:55,507 INFO sqlalchemy.engine.Engine COMMIT
+2024-11-21 22:51:55,509 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-11-21 22:51:55,512 INFO sqlalchemy.engine.Engine INSERT INTO users (email, hashed_password, session_id, reset_token) VALUES (?, ?, ?, ?)
+2024-11-21 22:51:55,512 INFO sqlalchemy.engine.Engine [generated in 0.00035s] ('test@test.com', 'SuperHashedPwd', None, None)
+2024-11-21 22:51:55,514 INFO sqlalchemy.engine.Engine COMMIT
+2024-11-21 22:51:55,524 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-11-21 22:51:55,527 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.email AS users_email, users.hashed_password AS users_hashed_password, users.session_id AS users_session_id, users.reset_token AS users_reset_token 
+FROM users 
+WHERE users.id = ?
+2024-11-21 22:51:55,527 INFO sqlalchemy.engine.Engine [generated in 0.00028s] (1,)
+1
+2024-11-21 22:51:55,528 INFO sqlalchemy.engine.Engine INSERT INTO users (email, hashed_password, session_id, reset_token) VALUES (?, ?, ?, ?)
+2024-11-21 22:51:55,528 INFO sqlalchemy.engine.Engine [cached since 0.01608s ago] ('test1@test.com', 'SuperHashedPwd1', None, None)
+2024-11-21 22:51:55,530 INFO sqlalchemy.engine.Engine COMMIT
+2024-11-21 22:51:55,544 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-11-21 22:51:55,544 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.email AS users_email, users.hashed_password AS users_hashed_password, users.session_id AS users_session_id, users.reset_token AS users_reset_token 
+FROM users 
+WHERE users.id = ?
+2024-11-21 22:51:55,544 INFO sqlalchemy.engine.Engine [cached since 0.01808s ago] (2,)
+2
